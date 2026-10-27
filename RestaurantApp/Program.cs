@@ -45,12 +45,37 @@ namespace RestaurantApp
                             );
                         }
                         break;
+
+                    case "2":
+                        Console.Write("กรอกประเภทอาหาร: ");
+                        string type = Console.ReadLine();
+                        bool foundType = false;
+                        foreach (restant r in restaurants)
+                        {
+                            if (r.Type.Equals(type, StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine(
+                                r.Name + " | " +
+                                r.Type + " | " +
+                                r.Rating
+                                );
+                                foundType = true;
+                            }
+                        }
+                        if (!foundType)
+                        {
+                            Console.WriteLine("ไม่พบร้านอาหารประเภทนี้");
+                        }
+                        break;
+
+
                     case "0":
                         Console.WriteLine("ปิดโปรแกรม");
                         return;
                     default:
                         Console.WriteLine("ยังไม่เปิดใช้งานเมนูนี้");
                         break;
+
                 }
             }
 
